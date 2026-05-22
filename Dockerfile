@@ -40,5 +40,5 @@ USER django
 # (Uses empty env vars just to bypass decoupling errors during build phase)
 RUN SECRET_KEY=build-time-key-only DEBUG=False ALLOWED_HOSTS=localhost python clothes_donation/manage.py collectstatic --noinput
 
-# Start the application using Gunicorn from the Django manage.py directory
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--chdir", "/app/clothes_donation", "clothes_donation.wsgi:application"]
+# Start the application: automatically run migrations first, then start Gunicorn
+CMD ["sh", "-c", "python /app/clothes_donation/manage.py migrate --noinput && gunicorn --bind 0.0.0.0:8000 --chdir /app/clothes_donation clothes_donation.wsgi:application"]
