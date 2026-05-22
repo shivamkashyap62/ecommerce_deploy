@@ -42,14 +42,23 @@ def register_view(request):
 
 def login_view(request):
     if request.method == "POST":
+        username = request.POST.get("username", "")
+        password = request.POST.get("password", "")
+        print(f"[DEBUG] Attempting login for username: '{username}'")
+        
         user = authenticate(
             request,
-            username=request.POST["username"],
-            password=request.POST["password"]
+            username=username,
+            password=password
         )
         if user:
+            print(f"[DEBUG] Authentication successful for: '{username}'")
             login(request, user)
             return redirect("home")
+        else:
+            user_exists = User.objects.filter(username=username).exists()
+            print(f"[DEBUG] Authentication FAILED for: '{username}'. Does user exist in DB? {user_exists}")
+            
     return render(request, "accounts/login.html")
 
 def logout_view(request):
