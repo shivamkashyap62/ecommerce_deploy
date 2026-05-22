@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2 class="mb-4">Dashboard</h2>
+    <div class="row">
+        {% if role == "donor" %}
+            <div class="col-md-4">
+                <div class="card text-center p-3">
+                    <h4>Total Donations</h4>
+                    <h2>{{ total_donations }}</h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center p-3">
+                    <h4>Total Requests</h4>
+                    <h2>{{ total_requests }}</h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center p-3">
+                    <h4>Approved Requests</h4>
+                    <h2>{{ approved_requests }}</h2>
+                </div>
+            </div>
+        {% endif %}
+        {% if role == "receiver" %}
+            <div class="col-md-6">
+                <div class="card text-center p-3">
+                    <h4>Total Requests Sent</h4>
+                    <h2>{{ total_requests }}</h2>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-center p-3">
+                    <h4>Approved Requests</h4>
+                    <h2>{{ approved_requests }}</h2>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

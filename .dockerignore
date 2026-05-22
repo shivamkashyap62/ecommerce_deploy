@@ -1,0 +1,28 @@
+# Version control
+.git
+.github
+.gitignore
+
+# Python virtual environment and cache
+myenv/
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local database and media
+*.sqlite3
+*.sqlite3-journal
+clothes_donation/media/*
+!clothes_donation/media/.gitkeep
+clothes_donation/staticfiles/*
+
+# Development & Configuration secrets
+.env
+
+# Docker specific
+Dockerfile
+.dockerignore
+README.md

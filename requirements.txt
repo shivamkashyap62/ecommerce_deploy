@@ -1,0 +1,13 @@
+asgiref==3.11.1
+Django==5.2.11
+djangorestframework==3.16.1
+pillow==12.1.1
+python-decouple==3.8
+sqlparse==0.5.5
+typing_extensions==4.15.0
+
+# Production Requirements
+gunicorn==23.0.0
+dj-database-url==2.3.0
+psycopg2-binary==2.9.10
+djlint==1.36.4

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Requests for {{ donation.title }}</h2>
+    {% for r in requests %}
+        <div>
+            <p>Receiver: {{ r.receiver.username }}</p>
+            <p>{{ r.message }}</p>
+            <p>Status: {{ r.status }}</p>
+            {% if r.status == "pending" %}
+                <a href="/donors/request/{{ r.id }}/approved/">Approve</a>
+                <a href="/donors/request/{{ r.id }}/rejected/">Reject</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}

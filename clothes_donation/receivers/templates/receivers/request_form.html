@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Request Donation: {{ donation.title }}</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <textarea name="message" placeholder="Message"></textarea>
+        <br>
+        <input type="file" name="image">
+        <br>
+        <button type="submit">Send Request</button>
+    </form>
+{% endblock %}

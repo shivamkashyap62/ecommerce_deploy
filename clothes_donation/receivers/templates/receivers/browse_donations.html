@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2 class="mb-3">Available Donations</h2>
+    <div class="row">
+        {% for d in donations %}
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    {% if d.image %}<img src="{{ d.image.url }}" class="card-img-top">{% endif %}
+                    <div class="card-body">
+                        <h5>{{ d.title }}</h5>
+                        <p>{{ d.description }}</p>
+                        <p class="text-muted">{{ d.location }}</p>
+                        <a href="/receivers/create/{{ d.id }}/" class="btn btn-primary">Request</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

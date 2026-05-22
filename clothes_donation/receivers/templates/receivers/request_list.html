@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2 class="mb-3">My Requests</h2>
+    {% for r in requests %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5>{{ r.donation.title }}</h5>
+                <p>
+                    Status: <strong>{{ r.status }}</strong>
+                </p>
+                {% if r.image %}<img src="{{ r.image.url }}" width="200">{% endif %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

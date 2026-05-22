@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/
+pip-wheel-metadata/
+pydoc-topics.py
+*.egg-info/
+.installed.cfg
+*.egg
+manifest
+spec
+
+# Virtual Environment
+myenv/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Django
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+static/
+.env
+
+# IDEs/Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
