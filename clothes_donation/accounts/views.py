@@ -19,6 +19,7 @@ def register_view(request):
         username = request.POST["username"]
         password = request.POST["password"]
         role = request.POST["role"]
+        print(f"[DEBUG] Registration attempt for username: '{username}' with role: '{role}'")
 
         try:
             validate_password(password)
@@ -30,10 +31,12 @@ def register_view(request):
 
             user.profile.role = role
             user.profile.save()
+            print(f"[DEBUG] Registration SUCCESSFUL for username: '{username}'")
 
             return redirect("login")
 
         except ValidationError as e:
+            print(f"[DEBUG] Registration FAILED for '{username}' due to validation errors: {e.messages}")
             return render(request, "accounts/register.html", {
                 "errors": e.messages
             })
