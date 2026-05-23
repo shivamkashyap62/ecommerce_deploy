@@ -1,8 +1,43 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="text-center">
-        <h1 class="mb-3">Welcome to Clothes Donation Platform 👕</h1>
-        <p class="lead">Help people by donating clothes or request what you need.</p>
-        {% if not user.is_authenticated %}<a href="/register/" class="btn btn-primary">Get Started</a>{% endif %}
+    <div class="row min-vh-75 align-items-center justify-content-center py-5">
+        <div class="col-lg-8 text-center mb-5">
+            <h1 class="display-3 mb-3 fw-extrabold text-white animate-float">
+                Give Clothes, <span class="text-gradient">Share Happiness</span> 👕
+            </h1>
+            <p class="lead text-white-50 fs-4 mb-4">
+                A seamless, premium platform connecting compassionate donors with local communities in need.
+            </p>
+            {% if not user.is_authenticated %}
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="/register/"
+                       class="btn btn-premium btn-premium-primary fs-5 px-5">Get Started Today</a>
+                    <a href="/login/" class="btn btn-premium btn-outline-light fs-5 px-5">Sign In</a>
+                </div>
+            {% else %}
+                <a href="/dashboard/"
+                   class="btn btn-premium btn-premium-primary fs-5 px-5">Go to your Dashboard</a>
+            {% endif %}
+        </div>
+        <div class="row justify-content-center gap-4 mt-4">
+            <div class="col-md-5 col-lg-4">
+                <div class="card glass-card p-4 h-100 text-center border-0">
+                    <div class="fs-1 mb-3">🎁</div>
+                    <h3 class="mb-2">For Donors</h3>
+                    <p class="text-white-50">
+                        Give your gently-used clothes a second life. List your items, choose pick-up locations, and bring warmth to someone's life.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-5 col-lg-4">
+                <div class="card glass-card p-4 h-100 text-center border-0">
+                    <div class="fs-1 mb-3">🤝</div>
+                    <h3 class="mb-2">For Receivers</h3>
+                    <p class="text-white-50">
+                        Browse available donations in your location, submit request messages, and collect quality clothes entirely for free.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

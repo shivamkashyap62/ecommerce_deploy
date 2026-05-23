@@ -1,38 +1,50 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2 class="mb-4">Dashboard</h2>
-    <div class="row">
+    <div class="d-flex justify-content-between align-items-center mb-5 animate-fade-in">
+        <div>
+            <h2 class="mb-1 text-white">Dashboard</h2>
+            <p class="text-white-50 mb-0">Overview of your activity and donation updates</p>
+        </div>
+        <div>
+            {% if role == "donor" %}
+                <a href="/donors/add/" class="btn btn-premium btn-premium-success">+ Add New Donation</a>
+            {% else %}
+                <a href="/receivers/browse/" class="btn btn-premium btn-premium-primary">🔍 Browse Clothes</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row g-4 animate-fade-in">
         {% if role == "donor" %}
             <div class="col-md-4">
-                <div class="card text-center p-3">
-                    <h4>Total Donations</h4>
-                    <h2>{{ total_donations }}</h2>
+                <div class="card glass-card metric-card border-0">
+                    <h5 class="text-white-50 mb-3">Total Donations</h5>
+                    <div class="metric-value">{{ total_donations }}</div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card text-center p-3">
-                    <h4>Total Requests</h4>
-                    <h2>{{ total_requests }}</h2>
+                <div class="card glass-card metric-card border-0">
+                    <h5 class="text-white-50 mb-3">Total Requests Received</h5>
+                    <div class="metric-value text-gradient">{{ total_requests }}</div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card text-center p-3">
-                    <h4>Approved Requests</h4>
-                    <h2>{{ approved_requests }}</h2>
+                <div class="card glass-card metric-card border-0">
+                    <h5 class="text-white-50 mb-3">Approved Requests</h5>
+                    <div class="metric-value text-success">{{ approved_requests }}</div>
                 </div>
             </div>
         {% endif %}
         {% if role == "receiver" %}
             <div class="col-md-6">
-                <div class="card text-center p-3">
-                    <h4>Total Requests Sent</h4>
-                    <h2>{{ total_requests }}</h2>
+                <div class="card glass-card metric-card border-0">
+                    <h5 class="text-white-50 mb-3">Total Requests Sent</h5>
+                    <div class="metric-value">{{ total_requests }}</div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="card text-center p-3">
-                    <h4>Approved Requests</h4>
-                    <h2>{{ approved_requests }}</h2>
+                <div class="card glass-card metric-card border-0">
+                    <h5 class="text-white-50 mb-3">Approved Requests</h5>
+                    <div class="metric-value text-gradient">{{ approved_requests }}</div>
                 </div>
             </div>
         {% endif %}

@@ -1,19 +1,48 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2 class="mb-3">Donations</h2>
-    <a href="/donors/add/" class="btn btn-success mb-3">Add Donation</a>
-    <div class="row">
+    <div class="d-flex justify-content-between align-items-center mb-5 animate-fade-in">
+        <div>
+            <h2 class="mb-1 text-white">My Donations</h2>
+            <p class="text-white-50 mb-0">Manage the clothes you have listed for donation</p>
+        </div>
+        <a href="/donors/add/" class="btn btn-premium btn-premium-success">+ Add Donation</a>
+    </div>
+    <div class="row g-4 animate-fade-in">
         {% for d in donations %}
-            <div class="col-md-4">
-                <div class="card mb-3">
-                    {% if d.image %}<img src="{{ d.image.url }}" class="card-img-top">{% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ d.title }}</h5>
-                        <p class="card-text">{{ d.description }}</p>
-                        <p class="text-muted">{{ d.location }}</p>
-                        <a href="/donors/{{ d.id }}/requests/" class="btn btn-sm btn-primary">View Requests</a>
+            <div class="col-md-6 col-lg-4">
+                <div class="card glass-card h-100 border-0 overflow-hidden">
+                    {% if d.image %}
+                        <div class="ratio ratio-16x9">
+                            <img src="{{ d.image.url }}"
+                                 class="card-img-top object-fit-cover"
+                                 alt="{{ d.title }}">
+                        </div>
+                    {% else %}
+                        <div class="ratio ratio-16x9 bg-dark d-flex align-items-center justify-content-center">
+                            <span class="fs-1">👕</span>
+                        </div>
+                    {% endif %}
+                    <div class="card-body p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="card-title text-white mb-2">{{ d.title }}</h5>
+                            <p class="card-text text-white-50 mb-3">{{ d.description }}</p>
+                        </div>
+                        <div>
+                            <p class="text-muted d-flex align-items-center gap-1 mb-4">
+                                📍 <span class="badge bg-secondary-subtle text-secondary-emphasis rounded-pill px-2.5 py-1">{{ d.location }}</span>
+                            </p>
+                            <a href="/donors/{{ d.id }}/requests/"
+                               class="btn btn-premium btn-premium-primary w-100 py-2">View Requests</a>
+                        </div>
                     </div>
                 </div>
+            </div>
+        {% empty %}
+            <div class="col-12 text-center py-5">
+                <div class="fs-1 mb-3">📦</div>
+                <h4 class="text-white-50">No donations created yet</h4>
+                <p class="text-white-50 mb-4">Get started by adding your first clothes donation listing.</p>
+                <a href="/donors/add/" class="btn btn-premium btn-premium-success">Add Donation</a>
             </div>
         {% endfor %}
     </div>
