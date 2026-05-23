@@ -33,7 +33,8 @@ def browse_donations(request):
     if request.user.profile.role != "receiver":
         return redirect("home")
 
-    donations = Donation.objects.all()
+    # Only show donations that have not been claimed/approved yet
+    donations = Donation.objects.exclude(requests__status="approved")
 
     return render(request, "receivers/browse_donations.html", {
         "donations": donations
